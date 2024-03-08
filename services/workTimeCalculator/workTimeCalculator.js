@@ -19,9 +19,9 @@ function workTimeCalculator(csvContent) {
     }
 
     const tryToFormatDate = (inputDate) => {
-        if(isNaN(new Date(inputDate)) && inputDate !== "NULL"){
+        if (isNaN(new Date(inputDate)) && inputDate !== "NULL") {
             return false;
-        }else{
+        } else {
             return new Date(inputDate);
         }
     }
@@ -31,9 +31,9 @@ function workTimeCalculator(csvContent) {
         const dateFrom = tryToFormatDate(record.DateFrom);
         const dateTo = tryToFormatDate(record.DateTo);
 
-        if(dateFrom === false || dateTo === false){
+        if (dateFrom === false || dateTo === false) {
             return {};
-        }else{
+        } else {
             record.DateFrom = standartizeDate(new Date(record.DateFrom));
 
             if (record.DateTo === "NULL") {
@@ -100,7 +100,19 @@ function workTimeCalculator(csvContent) {
         return overlapDays;
     }
 
-    return finalResult;
+    //Pair of employees who have worked together for the longest time
+    let maxPair = null;
+    let maxValue = 0;
+
+    for (const pair in finalResult) {
+        const value = finalResult[pair];
+        if (value > maxValue) {
+            maxValue = value;
+            maxPair = { [pair]: value };
+        }
+    }
+
+    return maxPair;
 }
 
 export default workTimeCalculator;
