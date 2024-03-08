@@ -13,13 +13,20 @@ Node.js 18.x and above
 ## Installation
 
 ### Clone repository
+
+```markdown
 git clone https://github.com/MartinaShebova/-Martina---Shebova--employees.git
+```
 
 ### Install NPM packages
+```markdown
 npm install
+```
 
 ### Run development server
+```markdown
 npm ruv dev
+```
 
 ## Requirements
 
