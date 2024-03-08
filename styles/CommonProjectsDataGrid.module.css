@@ -1,0 +1,12 @@
+.table {
+    width: 30%;
+    border-radius: 10px;
+    margin: 40px auto;
+    border: 1px solid #dddddd;
+}
+
+.header,
+.cell {
+    padding: 8px;
+    text-align: center;
+}
