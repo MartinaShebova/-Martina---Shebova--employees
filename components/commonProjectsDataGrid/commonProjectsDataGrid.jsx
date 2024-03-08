@@ -7,6 +7,8 @@ function CommonProjectsDataGrid({ dataGridData }){
         }
         return false;
     }
+
+    console.log("dataGridData", dataGridData);
 }
 
 export default CommonProjectsDataGrid;

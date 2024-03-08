@@ -1,6 +1,6 @@
 import { useState } from "react";
 import CommonProjectsDataGrid from "./commonProjectsDataGrid/commonProjectsDataGrid";
-import CSVUploader from "./uploadCSVFile/uploadCSVfile";
+import CSVUploader from "./csvUploader/csvUploader";
 
 function EmployeesWorkedTogetherWidget() {
     const [parsedData, setParsedData] = useState(null);

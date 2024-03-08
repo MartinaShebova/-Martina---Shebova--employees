@@ -1,4 +1,4 @@
-import csvParser from '@/services/csvParser/csvParser';
+import workTimeCalculator from '@/services/workTimeCalculator/workTimeCalculator';
 import Papa from 'papaparse';
 
 function CSVUploader({ parsedData }) {
@@ -32,7 +32,7 @@ function CSVUploader({ parsedData }) {
         Papa.parse(file, {
             complete: (result) => {
                 const csvData = result.data;
-                const calculatedData = csvParser(csvData);
+                const calculatedData = workTimeCalculator(csvData);
                 parsedData(calculatedData);
             },
             header: true
