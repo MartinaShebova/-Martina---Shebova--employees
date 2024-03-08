@@ -61,18 +61,17 @@ function workTimeCalculator(csvContent) {
                 const firstEmployee = currentProject[i];
                 const secondEmployee = currentProject[j];
                 let pairIndentifier;
-                const employeesDates = {
-                    firstEmployeeDateFrom: new Date(firstEmployee.DateFrom),
-                    firstEmployeeDateTo: new Date(firstEmployee.DateTo),
-                    secondEmployeeDateFrom: new Date(secondEmployee.DateFrom),
-                    secondEmployeeDateTo: new Date(secondEmployee.DateTo)
-                }
 
                 if (firstEmployee.EmpID !== secondEmployee.EmpID) {
                     pairIndentifier = buildEmployeePairIdentifier(firstEmployee.EmpID, secondEmployee.EmpID);
                 }
 
-                const overlapDaysCount = calculateOverlapDays(employeesDates);
+                const overlapDaysCount = calculateOverlapDays(
+                    new Date(firstEmployee.DateFrom),
+                    new Date(firstEmployee.DateTo),
+                    new Date(secondEmployee.DateFrom),
+                    new Date(secondEmployee.DateTo)
+                );
 
                 if (overlapDaysCount && pairIndentifier) {
                     if (finalResult.hasOwnProperty(pairIndentifier)) {
@@ -85,9 +84,8 @@ function workTimeCalculator(csvContent) {
         }
     })
 
-    function calculateOverlapDays(employeesDates) {
+    function calculateOverlapDays(firstEmployeeStartDate, firstEmployeeEndDate, secondEmployeeStartDate, secondEmployeeEndDate) {
 
-        const { firstEmployeeStartDate, firstEmployeeEndDate, secondEmployeeStartDate, secondEmployeeEndDate } = employeesDates;
         const overlapStartDate = new Date(Math.max(firstEmployeeStartDate, secondEmployeeStartDate));
         const overlapEndDate = new Date(Math.min(firstEmployeeEndDate, secondEmployeeEndDate));
 
