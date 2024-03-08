@@ -1,22 +1,6 @@
 import styles from '../../styles/CommonProjectsDataGrid.module.css';
 
 function CommonProjectsDataGrid({ dataGridData }) {
-
-    console.log("dataGridData", dataGridData);
-    // {
-    //     114-218: 434
-    // }
-
-    const extractValues = (data) => {
-        return (
-            <div>
-                {Object.keys(dataGridData).map(key => (
-                    <td key={key}>{key}: {data[key]}</td>
-                ))}
-            </div>
-        );
-    }
-
     return <>
         <table className={styles.table}>
             <thead>
